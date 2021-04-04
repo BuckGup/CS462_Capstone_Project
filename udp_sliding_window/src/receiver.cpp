@@ -115,6 +115,8 @@ int main(int argc, char *argv[]) {
             frameError = readPacketFrame(&sequenceNumber, data, &dataLength, &end, frame);
 
             createPacketACK(sequenceNumber, ack, frameError);
+            //TODO: put in some sort of control to fake errors. By not calling the sendto the sender will not 
+            // get the ACK. Emulationing noise.
             sendto(socketBucket, ack, ACK_SIZE, 0, (const struct sockaddr *) &clientAddress, clientAddressLength);
 
             if (sequenceNumber <= laf) {

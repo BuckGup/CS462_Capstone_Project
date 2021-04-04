@@ -331,6 +331,9 @@ int main(int argc, char *argv[]) {
 
                         for (int i = 0; i < windowSize; i++) {
                             sequenceNumber = lar + i + 1;
+                            if(sequenceNumber == sequenceCount){
+                                break;
+                            }
 
                             int shiftingBuffer = sequenceNumber * MAX_DATA_SIZE;
                             dataLength = (bufferSize - shiftingBuffer < MAX_DATA_SIZE) ? (bufferSize - shiftingBuffer)
